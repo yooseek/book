@@ -4,8 +4,11 @@ import com.example.book.domain.Book;
 import com.example.book.domain.BookRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
@@ -13,13 +16,13 @@ import java.util.List;
 @Service
 public class BookService {
 
-
     private final BookRepository bookRepository;
 
     @Transactional
     public Book 저장하기(Book book){
         return bookRepository.save(book);
     }
+
     @Transactional(readOnly = true)
     public List<Book> 모두가져오기(){
         return bookRepository.findAll();
